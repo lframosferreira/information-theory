@@ -42,7 +42,7 @@
 		            \[\mathcal{E}[f(x)] \geq f(\mathcal{E}[x])\],
 		            where \(\mathcal{E}\) denotes expectation. DISCORRER MAIS SOBRE PARA APRENDER
 		      \item The formula for the raw bit content of an ensemble \(X\) is
-		            \[H_0(X) = log_2 \mid \mathcal{A}_X \mid\],
+		            \[H_0(X) = log_2 \mid\mathcal{A}_X\mid\],
 		            where \(\mathcal{A}_X\) is the set of possible outcomes of the ensemble \(X\). It represents, in general, the number of binary questions that are needed to identify an outcome \(x\) from \(X\) for sure. It can also be seen as the smallest length necessary to map each outcome of \(X\) to a binary string.
 		      \item
 	      \end{enumerate}
@@ -50,7 +50,7 @@
 	\item As stated before, the entropy \(H(X)\) of an ensemble can be defined as:
 	      \[H(X) = \sum_{x \in X} p_x log_2 \frac{1}{p_x}\],
 	      where \(p_x\) represents the probability of observing the outcome \(x\).
-	      Note that, for each outcome \(x\), we have \(p_x \geq 0\), which implies that \(p_x log_2 \frac{1}{p_x} \geq 0\) (For convention, we assume \(0 log_2 \frac{1}{0}\) to be \(0\), since it's where the limit goes. Therefore, for each outcome, there is a contribution to \(H(X)\) that greater or equal to zero. At last, we have the sum over the contribution of every outcome, values that are greater or equal to zero, which is also greater or equal to zero, so \(H(X) \geq 0\).
+          Note that, for each outcome \(x\), we have \(p_x \geq 0\), which implies that \(p_x log_2 \frac{1}{p_x} \geq 0\) (For convention, we assume \(0 log_2 \frac{1}{0}\) to be \(0\), since it's where the limit goes). Therefore, for each outcome, there is a contribution to \(H(X)\) that is greater or equal to zero. At last, we have the sum over the contribution of every outcome, values that are greater or equal to zero, which is also greater or equal to zero, so \(H(X) \geq 0\).
 	\item \begin{enumerate}
 
 		      \item
@@ -60,7 +60,7 @@
 		            \[\mathcal{E}(\frac{1}{P(x)}) = p_a \frac{1}{p_a} + p_b \frac{1}{p_b} + p_c \frac{1}{p_c} = 1 + 1 + 1 = 3\]
 
 		      \item For an arbitrary ensemble \(X\), \(\mathcal{E}(\frac{1}{P(x)})\) is exactly the number of possible outcomes of \(X\).
-		            \[\mathcal{E}(\frac{1}{P(x)}) = \sum_{x \in \mathcal{A}_X} P(x) \frac{1}{P(x)} = \sum_{x \in \mathcal{A}_X} 1 = \mid \mathcal{A}_X \mid\]
+		            \[\mathcal{E}(\frac{1}{P(x)}) = \sum_{x \in \mathcal{A}_X} P(x) \frac{1}{P(x)} = \sum_{x \in \mathcal{A}_X} 1 = \mid\mathcal{A}_X\mid\]
 
 		      \item jensen
 	      \end{enumerate}
@@ -72,11 +72,23 @@
 	      \[H(X) = \sum_{k=0}^{\infty} P(X = k) log_2 \frac{1}{P(X = k)} = \sum_{k=0}^{\infty} (\frac{1}{2})^k log_2 \frac{1}{(\frac{1}{2})^k}\]
 	      \[H(X) = \sum_{k=0}^{\infty} (\frac{1}{2})^k k = \frac{\frac{1}{2}}{(1 - \frac{1}{2})^2} = \frac{\frac{1}{2}}{\frac{1}{4}} = 2\]
 
-	\item Handmande exercise.
+      \item If \(X\) and \(Y\) are independent, we have \(P(x, y) = P(x)P(y)\). From there, we can show:
+          \[h(x, y) = log \frac{1}{P(x, y)}\]
+          \[h(x, y) = log \frac{1}{P(x)P(y)}\]
+          \[h(x, y) = log \frac{1}{P(x)} + log \frac{1}{P(y)}\]
+          \[h(x, y) = h(x) + h(y)\]
+        
+        Now, with this result, we can show:
+        
+        \[H(X, Y) = \sum_{x \in \mathcal{A}_X} \sum_{y \in \mathcal{A}_Y} P(x, y)h(x, y)\]
+        \[H(X, Y) = \sum_{x \in \mathcal{A}_X} \sum_{y \in \mathcal{A}_Y} P(x, y)(h(x) + h(y))\]
+        \[H(X, Y) = \sum_{x \in \mathcal{A}_X} \sum_{y \in \mathcal{A}_Y} P(x, y)h(x) + \sum_{x \in \mathcal{A}_X} \sum_{y \in \mathcal{A}_Y} P(x, y)h(y)\]
+        \[H(X, Y) = \sum_{x \in \mathcal{A}_X} \sum_{y \in \mathcal{A}_Y} P(x)P(y)h(x) + \sum_{x \in \mathcal{A}_X} \sum_{y \in \mathcal{A}_Y} P(x)P(y)h(y)\]
+        \[H(X, Y) = \sum_{x \in \mathcal{A}_X} P(x)h(x) \sum_{y \in \mathcal{A}_Y} P(y) + \sum_{y \in \mathcal{A}_Y} P(y)h(y) \sum_{x \in \mathcal{A}_x} P(x)\]
+        \[H(X, Y) = \sum_{x \in \mathcal{A}_X} P(x)h(x) + \sum_{y \in \mathcal{A}_Y} P(y)h(y) \]
+        \[H(X, Y) = H(X) + H(Y)\]
 
-
-
-	\item No, it couldn't. It's easy to see that based on the pidgeonhle principle. If every possible outcome were compressed into a binary code of length shorter than \(H_0(X)\), then some outcomes would be mapped to the same binary code, which configures a type of lossi compressor. Therefore, it wouldn't be possible to map \(c\) back to \(x\) with \(100\%\) reliability.
+	\item No, it couldn't. It's easy to see that based on the pidgeonhle principle. If every possible outcome were compressed into a binary code of length shorter than \(H_0(X)\), then some outcomes would be mapped to the same binary code, which configures a type of lossy compressor. Therefore, it wouldn't be possible to map \(c\) back to \(x\) with \(100\%\) reliability, data would be lost during the process of encoding.
 
 	\item
 
