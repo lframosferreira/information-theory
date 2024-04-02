@@ -31,11 +31,11 @@
 		      \item The source coding theorem for symbol codes states that for a ensemble \(X\), there is a prefix code \(C\) whose expected length \(L(C, X)\) satisfies the following inequality:
 		            \[H(X) \leq L(C, X) \leq H(X) + 1\],
 		            where \(H(X)\) denotes the entropy of the ensemble \(X\).
-		            So, at a high level, the optimal prefix code for the ensemble has a expected length very close to the entropy of the ensemble. Such a prefix code is the best way to compress the outcomes of the ensemble \(X\) in a binary encoding.
+		            So, at a high level, the optimal prefix code for the ensemble has a expected length very close to the entropy of the ensemble. Such a prefix code is the best way to compress the outcomes of the ensemble \(X\) in a binary encoding, i. e. the entropy of the ensemble is the limit for the amount of bits per symbol of a prefix free encoding. Also, one can always use a prefix free encoding and achieve a result with at most \(H(X) + 1\) bits per symbol.
 	      \end{enumerate}
 
-	\item No, it is not uniquely decodeable, since there are codewords that share prefixes, such as 11 and 111. REVISAR
-	\item Yes, it is.
+	\item No, it is not uniquely decodeable, since there are codewords that are prefixer of others. The string 111111, for example, could represent three uses of the code 111 or two uses of the code 111.
+	\item Yes, it is, since it is prefix free.
 	\item Handmade exercise.
 	\item We know that Huffman codes are optimal. We will show that the following probability distribution \(S\) give \textit{two} different optimal codes that assing different lengths to the symbols.
 	      \[S = \{1/6,1/6,1/3,1/3\}\]
