@@ -4,6 +4,8 @@
 \usepackage{subcaption}
 \usepackage{amsmath}
 \usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\bibliographystyle{unsrtnat}
+\usepackage[square, numbers]{natbib}
 
 \bibliographystyle{alpha}
 
@@ -18,8 +20,11 @@
 
 \begin{enumerate}
 	\item \begin{enumerate}
-		      \item a
-		      \item b
+		      \item A (binary) symbol code for an ensemble, denoted by \(C\), is a function that maps the outcomes of the ensemble to a set os binary strings. In particular, this set of strings is a subset of \(\{0, 1\}^+\), which denotes the set of all binary strings of non zero length. The extended code for the ensemble, denoted by \(C^+\), is a function from \(\mathcal{A}_X^+\) to \(\{0, 1\}^+\). More precisely, it represents the concatenation of the codewords of a ordered set of outcomes from the ensemble.
+		      \item A symbol code is uniquely decodeable when no element is mapped to the same codeword. It is easy to see that is true based on the pidgeonhole principle. More formally, a code \(C(x)\) is uniquely decodeable if, under the extended code \(C^+\), we have:
+		            \[\forall x, y \in \mathcal{A}_X^+, x \neq y \Rightarrow c^+(x) \neq c^+(y)\]
+
+                    A symbol code is prefix-free if no codeword is a prefix of any other codeword, as stated by McKay \cite{MacKay}.
 		      \item c
 		      \item d
 	      \end{enumerate}
@@ -32,5 +37,7 @@
 	\item 5
 	\item 6
 \end{enumerate}
+
+\bibliography{sample}
 
 \end{document}
