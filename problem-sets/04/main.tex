@@ -23,19 +23,22 @@
 		      \item A (binary) symbol code for an ensemble, denoted by \(C\), is a function that maps the outcomes of the ensemble to a set os binary strings. In particular, this set of strings is a subset of \(\{0, 1\}^+\), which denotes the set of all binary strings of non zero length. The extended code for the ensemble, denoted by \(C^+\), is a function from \(\mathcal{A}_X^+\) to \(\{0, 1\}^+\). More precisely, it represents the concatenation of the codewords of a ordered set of outcomes from the ensemble.
 		      \item A symbol code is uniquely decodeable when no element is mapped to the same codeword. It is easy to see that is true based on the pidgeonhole principle. More formally, a code \(C(x)\) is uniquely decodeable if, under the extended code \(C^+\), we have:
 		            \[\forall x, y \in \mathcal{A}_X^+, x \neq y \Rightarrow c^+(x) \neq c^+(y)\]
-
-                    A symbol code is prefix-free if no codeword is a prefix of any other codeword, as stated by McKay \cite{MacKay}.
-		      \item c
+		            A symbol code is prefix-free if no codeword is a prefix of any other codeword, as stated by McKay \cite{MacKay}.
+		      \item The Kraft inequality says that, for any uniquely decodeable code \(C(x)\) over the alphabet \(\{0,1\}\), the length \(l_i\) of the codewords must satisfy:
+		            \[\sum_{i=1}^{I}2^{-l_i} \leq 1\],
+		            where \(I = |\mathcal{A}_X|\).
 		      \item d
 	      \end{enumerate}
 
-	\item 2
-	\item 3
+	\item No, it is not uniquely decodeable, since there are codewords that share prefixes, such as 11 and 111. REVISAR
+	\item Yes, it is.
 	\item \begin{enumerate}
 
 	      \end{enumerate}
-	\item 5
-	\item 6
+	\item We know that Huffman codes are optimal. We will show that the following probability distribution \(S\) give \textit{two} different optimal codes that assing different lengths to the symbols.
+	      \[S = \{1/6,1/6,1/3,1/3\}\]
+
+	\item To play the \textbf{twenty questions} optimally, it is necessary to find a set of binary questions that guarantees you to eliminate half or as close as posible to half of the current options for the answer. This ensures the number of questions to be asked to be of the order of \(log N\), where \(N\) is the number of elements in the universe. To find such set of questions, several approaches can be made, given the properties of the elements of the universe. One of them is to find some kind of order in the set of elements of the universe. With such an ordering, one cna apply a binary search algorithm to find the desired object.
 \end{enumerate}
 
 \bibliography{sample}
