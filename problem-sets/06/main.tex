@@ -22,8 +22,10 @@
 		            \[H(X, Y) = \sum_{xy \in \mathcal{A}_x\mathcal{A}_y} P(x, y) log \frac{1}{P(x, y)}\]
 		      \item \(H(X | Y)\) is the conditional entropy of \(X\) given \(Y\). It represents the average information infomration content of \(X\) given each \(y \in \mathcal{A}_y\).
 		            \[H(X | Y) = \sum_{xy \in \mathcal{A}_x\mathcal{A}_y} P(x, y) log \frac{1}{P(x | y)}\]
-		      \item \(I(X, Y)\) is the mutual information between \(X\) and \(Y\).
-		      \item d
+		      \item \(I(X, Y)\) is the mutual information between \(X\) and \(Y\). It is the average reduction of uncertainty/ gain of information about \(X\) when learning the values of \(Y\), or vice-versa.
+		            \[I(X; Y) = H(X) - H(X | Y) \]
+		      \item \(I(X: Y | Z)\) is the conditional mutual information between \(X\) and \(Y\) given \(Z\). It is the mututal information between \(X\) and \(Y\) given that the ensemble \(Z\) is known.
+		            \[I(X; Y | Z) = H(X | Z) - H(X | Y, Z)\]
 	      \end{enumerate}
 
 	\item \begin{enumerate}
@@ -32,7 +34,8 @@
 		      \item c
 	      \end{enumerate}
 
-	\item 3
+	\item 
+        \[H(X, Y) = \sum_{xy \in \mathcal{A}_x \mathcal{A}_y} P(x, y) log \frac{1}{P(x, y)} = \]
 	\item 4
 	\item 5
 	\item 6
