@@ -24,13 +24,25 @@
             \item If a channel is noisy, there is a non null probability that the message sent by a source will be different than the message received by the receiver. The noisy channel will affect the message, making it not easy to decode. To solve this issue, some kind of approach needs to be used to establish a reliable communication over a noisy channel.
             \item 
         \end{enumerate}
-    \item 2
-    \item 3
-    \item 4
+    \item We can solve this using Bayes Theorem.
+        \[P(X = 1 | Y = 0) = \frac{P(Y = 0 | X = 1) * P(X = 1)}{P(Y = 0)}\]
+        \[P(X = 1 | Y = 0) = \frac{0.15 * 0.1}{P(Y = 0 | X = 0)* P(X = 0) + P(Y = 0 | X = 1) * P(X = 1)}\]
+        \[P(X = 1 | Y = 0) = \frac{0.15 * 0.1}{0.85 * 0.9 + 0.15 * 0.1} = 0.0192\]
+    \item We can again use Bayes Theorem.
+        \[P(X = 1 | Y = 0) = \frac{P(Y = 0 | X = 1) * P(X = 1)}{P(Y = 0)}\]
+        \[P(X = 1 | Y = 0) = \frac{0.15 * 0.1}{P(Y = 0 | X = 0)* P(X = 0) + P(Y = 0 | X = 1) * P(X = 1)}\]
+        \[P(X = 1 | Y = 0) = \frac{0.15 * 0.1}{0.15 * 0.1 + 1.0 * 0.9} = 0.016\]
+    \item 
+        \[I(X; Y) = H(X) - H(X | Y)\]
+        \[H(X) = \sum_{x \in X} P(X = x) * \frac{1}{log_2(P(X = x))}\]
+        \[H(X | Y) = \sum_{y \in Y} P(X = x, Y = y) * \frac{1}{log_2(P(X = x | Y = y))}\]
+
+        \[H(X)\]
     \item 5
 
 \end{enumerate}
 
 \bibliography{sample}
+\nocite{*}
 
 \end{document}
