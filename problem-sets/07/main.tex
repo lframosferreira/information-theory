@@ -24,9 +24,9 @@
 		      \item If a channel is noisy, there is a non null probability that the message sent by a source will be different than the message received by the receiver. The noisy channel will affect the message, making it not easy to decode. To solve this issue, some kind of approach needs to be used to establish a reliable communication over a noisy channel. That's the problema of reliable communication over a noisy channel. We want to be able
 		            to retrieve the bits sent by the source in a reliable way.
 		      \item The information conveyed by a channel can be descbribed in terms of it's mutual information. The mutual information between the ensembles \(X\) and \(Y\) is given by the formula \(I(X; Y) = H(X) - H(X | Y)\). As stated by the concept of entropy of an ensemble, the value of
-		            \(H(X)\) represents the original uncertanity about the ensemble $X$ and the value \H(X | Y)\) is the uncertanity about ensemble \(X\) after the information about the ensemble \(Y\) is known.
+		            \(H(X)\) represents the original uncertanity about the ensemble \(X\) and the value \(H(X | Y)\) is the uncertanity about ensemble \(X\) after the information about the ensemble \(Y\) is known.
 		      \item The capacity of a channel is the maximum mutual information between the input \(X\) and the output \(Y\) of the channel, between all posible probability distributions that the input \(X\) can have. Mathematically, it can be described as
-		            max \(I(X; Y)\) over all \(\mathcal{P}_X). The operational definiton states that de capacity of a channel is the maximum posible transmission rate between the input and the output in a noisy channel that guarantees that the communication is reliable.
+		            max \(I(X; Y)\) over all \(\mathcal{P}_X\). The operational definiton states that de capacity of a channel is the maximum posible transmission rate between the input and the output in a noisy channel that guarantees that the communication is reliable.
 		            Shannon's source coding theorem states that both the mathematical definiton and the operational definiton of the capacity of a channel are the same.
 	      \end{enumerate}
 	\item We can solve this using Bayes Theorem.
@@ -37,13 +37,33 @@
 	      \[P(X = 1 | Y = 0) = \frac{P(Y = 0 | X = 1) * P(X = 1)}{P(Y = 0)}\]
 	      \[P(X = 1 | Y = 0) = \frac{0.15 * 0.1}{P(Y = 0 | X = 0)* P(X = 0) + P(Y = 0 | X = 1) * P(X = 1)}\]
 	      \[P(X = 1 | Y = 0) = \frac{0.15 * 0.1}{0.15 * 0.1 + 1.0 * 0.9} = 0.016\]
-	\item
-	      \[I(X; Y) = H(X) - H(X | Y)\]
-	      \[H(X) = \sum_{x \in X} P(X = x) * \frac{1}{log_2(P(X = x))}\]
-	      \[H(X | Y) = \sum_{y \in Y} P(X = x, Y = y) * \frac{1}{log_2(P(X = x | Y = y))}\]
+	\item We have a binary symmetric channel.
+	      \[I(X; Y) = H(Y) - H(Y | X)\]
+	      \[H(Y) = \sum_{y \in Y} P(Y = y) * \frac{1}{log_2(P(Y = y))}\]
+	      \[H(Y | X) = \sum_{x \in X, y \in Y} P(X = x, Y = y) * \frac{1}{log_2(P(Y = y | X = x))}\]
 
-	      \[H(X)\]
-	\item 5
+	      Since \(P(Y = 0) = P(Y = 1) = 0.5\),
+	      \[H(Y) = H_2(0.5) = 1\]
+	      Since \(P(Y = 0) = P(Y = 1) = 0.5\),
+	      \[H(Y | X) = H_2(0.15) = 0.15 * \frac{1}{0.15} + 0.85 * \frac{1}{0.85} = 0.61\]
+
+	      Therefore,
+	      \[I(X; Y) = 1 - 0.61 = 0.39\]
+
+	\item We have a Z channel.
+	      \[P(Y = 0) = P(Y = 0 | X = 0) * P(X = 0) + P(Y = 0 | X = 1) * P(X = 1) = 1 * 0.5 + 0.15 * 0.5 = 0.575\]
+	      \[H(Y) = H_2(0.575) = 0.575 * \frac{1}{0.575} * 0.425 * \frac{1}{0.425} = 0.983\]
+
+	      \[H(Y | X) = 0.5 * H_2(0.15) + 0.5 * 0 = 0.5 * 0.61 = 0.305\]
+
+	      \[I(X; Y) = 0.983 - 0.305 = 0.678\]
+
+	\item We achieve the optimal value for capacity when \(P(X = 0) = P(X = 1) = 0.5\).
+	      \[C = I(X; Y) = H_2(0.5) - H_2(f) = 1 - H_2(f)\]
+
+	\item Since the channel is symmetric, we achieve the optimal capacity with the input distribution being \(\{0.5, 0.5\}\), and we can calculate the value
+	      using the mutual information.
+	      \[I(X; Y) = H(X) - H(X | Y) = H_2(0.5) - 0.15 * H_2(0.5) = 1 - 0.15 * 1 = 0.85\]
 
 \end{enumerate}
 
