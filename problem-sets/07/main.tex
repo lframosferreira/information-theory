@@ -19,26 +19,31 @@
 \maketitle
 
 \begin{enumerate}
-    \item  \begin{enumerate}
-            \item A discrete memoryless channel is characterized in a formal way as an input alphabet \(\mathcal{A}_x\), an output alphabet \(\mathcal{A}_y\) and a set of conditional probability distributions \(P(y | x)\), for each \(x \in \mathcal{A}_x\).
-            \item If a channel is noisy, there is a non null probability that the message sent by a source will be different than the message received by the receiver. The noisy channel will affect the message, making it not easy to decode. To solve this issue, some kind of approach needs to be used to establish a reliable communication over a noisy channel.
-            \item 
-        \end{enumerate}
-    \item We can solve this using Bayes Theorem.
-        \[P(X = 1 | Y = 0) = \frac{P(Y = 0 | X = 1) * P(X = 1)}{P(Y = 0)}\]
-        \[P(X = 1 | Y = 0) = \frac{0.15 * 0.1}{P(Y = 0 | X = 0)* P(X = 0) + P(Y = 0 | X = 1) * P(X = 1)}\]
-        \[P(X = 1 | Y = 0) = \frac{0.15 * 0.1}{0.85 * 0.9 + 0.15 * 0.1} = 0.0192\]
-    \item We can again use Bayes Theorem.
-        \[P(X = 1 | Y = 0) = \frac{P(Y = 0 | X = 1) * P(X = 1)}{P(Y = 0)}\]
-        \[P(X = 1 | Y = 0) = \frac{0.15 * 0.1}{P(Y = 0 | X = 0)* P(X = 0) + P(Y = 0 | X = 1) * P(X = 1)}\]
-        \[P(X = 1 | Y = 0) = \frac{0.15 * 0.1}{0.15 * 0.1 + 1.0 * 0.9} = 0.016\]
-    \item 
-        \[I(X; Y) = H(X) - H(X | Y)\]
-        \[H(X) = \sum_{x \in X} P(X = x) * \frac{1}{log_2(P(X = x))}\]
-        \[H(X | Y) = \sum_{y \in Y} P(X = x, Y = y) * \frac{1}{log_2(P(X = x | Y = y))}\]
+	\item  \begin{enumerate}
+		      \item A discrete memoryless channel is characterized in a formal way as an input alphabet \(\mathcal{A}_x\), an output alphabet \(\mathcal{A}_y\) and a set of conditional probability distributions \(P(y | x)\), for each \(x \in \mathcal{A}_x\).
+		      \item If a channel is noisy, there is a non null probability that the message sent by a source will be different than the message received by the receiver. The noisy channel will affect the message, making it not easy to decode. To solve this issue, some kind of approach needs to be used to establish a reliable communication over a noisy channel. That's the problema of reliable communication over a noisy channel. We want to be able
+		            to retrieve the bits sent by the source in a reliable way.
+		      \item The information conveyed by a channel can be descbribed in terms of it's mutual information. The mutual information between the ensembles \(X\) and \(Y\) is given by the formula \(I(X; Y) = H(X) - H(X | Y)\). As stated by the concept of entropy of an ensemble, the value of
+		            \(H(X)\) represents the original uncertanity about the ensemble $X$ and the value \H(X | Y)\) is the uncertanity about ensemble \(X\) after the information about the ensemble \(Y\) is known.
+		      \item The capacity of a channel is the maximum mutual information between the input \(X\) and the output \(Y\) of the channel, between all posible probability distributions that the input \(X\) can have. Mathematically, it can be described as
+		            max \(I(X; Y)\) over all \(\mathcal{P}_X). The operational definiton states that de capacity of a channel is the maximum posible transmission rate between the input and the output in a noisy channel that guarantees that the communication is reliable.
+		            Shannon's source coding theorem states that both the mathematical definiton and the operational definiton of the capacity of a channel are the same.
+	      \end{enumerate}
+	\item We can solve this using Bayes Theorem.
+	      \[P(X = 1 | Y = 0) = \frac{P(Y = 0 | X = 1) * P(X = 1)}{P(Y = 0)}\]
+	      \[P(X = 1 | Y = 0) = \frac{0.15 * 0.1}{P(Y = 0 | X = 0)* P(X = 0) + P(Y = 0 | X = 1) * P(X = 1)}\]
+	      \[P(X = 1 | Y = 0) = \frac{0.15 * 0.1}{0.85 * 0.9 + 0.15 * 0.1} = 0.0192\]
+	\item We can again use Bayes Theorem.
+	      \[P(X = 1 | Y = 0) = \frac{P(Y = 0 | X = 1) * P(X = 1)}{P(Y = 0)}\]
+	      \[P(X = 1 | Y = 0) = \frac{0.15 * 0.1}{P(Y = 0 | X = 0)* P(X = 0) + P(Y = 0 | X = 1) * P(X = 1)}\]
+	      \[P(X = 1 | Y = 0) = \frac{0.15 * 0.1}{0.15 * 0.1 + 1.0 * 0.9} = 0.016\]
+	\item
+	      \[I(X; Y) = H(X) - H(X | Y)\]
+	      \[H(X) = \sum_{x \in X} P(X = x) * \frac{1}{log_2(P(X = x))}\]
+	      \[H(X | Y) = \sum_{y \in Y} P(X = x, Y = y) * \frac{1}{log_2(P(X = x | Y = y))}\]
 
-        \[H(X)\]
-    \item 5
+	      \[H(X)\]
+	\item 5
 
 \end{enumerate}
 
