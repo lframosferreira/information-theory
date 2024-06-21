@@ -20,21 +20,28 @@
 
 \begin{enumerate}
 	\item \begin{enumerate}
-			\item The Kolgomorov complexity of a string  \(s\) is the length of the shortest program that can be passed to a UTM (Universal Turing Machine),
-			so that the UTM outputs the string \(s\) and then halts.
-		\item when te kolh complexity is bigger then the lenght of the string
-		\item 
-	\end{enumerate}
+		      \item The Kolgomorov complexity of a string  \(s\) is the length of the shortest program that can be passed to a UTM (Universal Turing Machine),
+		            so that the UTM outputs the string \(s\) and then halts.
+		      \item A string is considered truly random when it's Kolgomorov complexity is bigger tah or equal to it's own length.
+		            A string that is truly random, for example, is the result string of subsequent flip of a coin. Since the flip of the coin is random, there is no way we can compress it using some kind of algorithm. A string that looks random but is not is the decimal expansion of the irrational number
+		            Pi.
+		      \item The universal probability of a string \(s\) is the probability that, when we give a random program to a UTM, \(s\) is the output of the execution of such program.
+		            It is related to its Kolmogorov complexity by the equation \(P_U(s) \approx 2^{-K(s)}\), where \(P_U(s)\) is the universal probabilty
+		            of the string \(s\) and \(K(s)\) is the Kolgomorov complexity of the string \(s\).
+		            SAY ITUITION
+	      \end{enumerate}
 
-\item 2 
-\item \begin{enumerate}
-		\item a 
-		\item b
-\end{enumerate}
-\item \begin{enumerate}
-		\item a
-		\item b
-\end{enumerate}
+	\item We can construct a program that outputs the concatenation \(xy\) in the following way. First, use the fact that the program that describes \(x\),
+	      which has at most \(K(x)\) bits and the program that describes \(y\) has at most \(y\) bits. Then, create a program that first outputs \(x\), using at most \(K(x)\) bits, and then outputs \(y\), which uses at most \(K(y)\) bits.
+	      The piece of code that tells the order of the output is constant size and do not depend on the strings. So, the created program, which outputs the concatenation \(xy\), has a Kolgomorov complexity of at most \(K(x) + K(y) + c\).
+	\item \begin{enumerate}
+		      \item a
+		      \item b
+	      \end{enumerate}
+	\item \begin{enumerate}
+		      \item a
+		      \item b
+	      \end{enumerate}
 \end{enumerate}
 
 \bibliography{sample}
