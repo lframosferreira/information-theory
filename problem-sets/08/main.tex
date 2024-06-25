@@ -2,11 +2,37 @@
 \usepackage{graphicx}
 \usepackage{float}
 \usepackage{subcaption}
+\usepackage{listings}
 \usepackage{amsmath}
 \usepackage[square, numbers]{natbib}
 \bibliographystyle{unsrtnat}
 \usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\usepackage{xcolor}
 
+\definecolor{mGreen}{rgb}{0,0.6,0}
+\definecolor{mGray}{rgb}{0.5,0.5,0.5}
+\definecolor{mPurple}{rgb}{0.58,0,0.82}
+\definecolor{backgroundColour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{CStyle}{
+    backgroundcolor=\color{backgroundColour},   
+    commentstyle=\color{mGreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{mGray},
+    stringstyle=\color{mPurple},
+    basicstyle=\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2,
+    language=C
+}
 \bibliographystyle{alpha}
 
 \title{Information Theory \\ \large Problem Set 08 - Kolmogorov Complexity and Universal Probability}
@@ -41,9 +67,32 @@
 		            on the values of the flip. If the flip is heads, we put a \(1\) in the string \(n_1\) and a \(0\) in the string \(n_2\). Otherwise, we do the opposite. Both strings are complex, since they were created by the random flip of a fair coin. But if we add them, considering the binary number they represent, we achieve, by construction,
 		            a string of \(N 1's\), which is very simple and can be described very easily.
 	      \end{enumerate}
-	\item \begin{enumerate}
-		      \item a
-		      \item b
+	\item For both questions, all we need is to find the universal probability of the code that prints the desired outputs with their specific prefixes.
+
+	      \begin{enumerate}
+		      \item In python, the following code will print a sequence of \(n\) zeros.
+		            \begin{lstlisting}[style=Cstyle]
+				  	print(n*"0")
+				  \end{lstlisting}
+		            The code only has \(11\) characters and the cost to represent the number \(n\) in the code is roughly \(log_{10}(n)\) characters, so in total we have \(11 + log_{10}n\) characters, which is approximattely \(88 + 8 * log_{10}n\) bits, if we use ASCII.
+		            So, we can infer that the Kolgomorov complexity of the string with a sequence of \(n\) zeros is less than \(88 + 8 * log_{10}n\) and that the universal probability of such string \(s\) is \(2^K(s) \geq 2^{-(88 + log_{10}n)}\).
+		      \item All we need to do is find the universal probability of the code that produces the first \(n\) digits of Pi. We know such programs can be written in a language such as \(C\), so we can write a program in \(C\) that returns the first \(n\) digits of Pi using a limited number of bits, using some kind of formula for computing
+		            the value of Pi. For example if we use the following code, we would return Pi with the first 7 digits of Pi.
+		            \begin{lstlisting}[style=CStyle]
+				  #include <stdio.h>
+				  int main() {
+					  double pi = 0.0;
+					  double m = 1.0f;
+					  for (int i = 1; i < 10000000; i += 2) {
+						  pi += m * (1.0f / i);
+						  m *= -1.0f;
+					  }
+					  printf("%f\n", 4.0f*pi);
+					  return 0;
+				  }
+				  \end{lstlisting}
+		            The code above has a size of 4.0K, which is around 32768 bits. So, we know that the Kolgomorov complexity of the first 7 digits of Pi is less than 32768 and that it's universal probability is approximately bigger than \(2^{-32768}\).
+		            The problem is more complex for general \(n\), but the result above gives a rough idea of how to solve the problem.
 	      \end{enumerate}
 \end{enumerate}
 
