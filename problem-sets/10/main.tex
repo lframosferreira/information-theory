@@ -25,12 +25,46 @@
 		      \item Given a set of secret values, we can define the set of all posible probability distributions over this set of secret values. A state of knowledge of a agent about
 		            the secret (or state of the world) can be defined as one of such probability distributions that the set of posible secrets can have.
 
-		      \item A information measure is a mapping from a state of knowledge to a real number, i.e, it's a function \(f: \mathcal{X} \mathbb{D} \rightarrow \mathbb{R}\), where \(\mathca{X} \mathbb{D}\)
+		      \item A information measure is a mapping from a state of knowledge to a real number, i.e, it's a function \(f: \mathcal{X} \mathbb{D} \rightarrow \mathbb{R}\), where \(\mathcal{X} \mathbb{D}\)
 		            is a set of probability distributions about a set of secrets \(\mathcal{X}\), \(f\) is the function itself and \(\mathbb{R}\) is a real number that represents how much knowledge the agent had about the secret
 		            before knowing it's value.
 		      \item The mathematical definiton of information measure is a function that maps every posible input of possible states of knowledge to a real number that represents the value of that knowledge. The operational significance
 		            of information measure it's the meaning of the real number returned by the function mentioned, i.e., what that value means and how can we interpretate it.
+		      \item \begin{enumerate}
+			            \item Shannons's entropy is formally defined as the function \[H(\pi) = -\sum_{x \in \mathbb{X}} \pi_x log_2(\pi_x)\], where \(\pi\) is a probability distribution over the set of secrets \(\mathbb{X}\)
+			                  Shannon's entropy operational significance is the expected number of questions an agent would ask to discover the secret when using an optimal binary search.
+			            \item Bayes vulnerability is formally defined as the function \[V(\pi) = \max_{x \in \mathbb{X}} \pi_x\]. Bayes vulnerability operational
+			                  significance is the probability that an agent can guess the secret with only one try.
+			            \item Guessing entropy is formally defined as the function \[G(\pi) = \sum_k \pi_k k\], where \(k\) defines
+			                  a non increasing ordering of the probability distribution \(\pi_i\). Gyessing entropy operational significance is the expected
+			                  number of guesses an agent would need to try in order to discover the secret in a optimal linear search.
+		            \end{enumerate}
+		      \item We can define \(\mathbb{X}\) the set of secrets and \(mathbb{W}\) the set of posible actions the adversary
+		            can take in order to discover the secrets we want to hide. The function \[g: \mathbb{W} \times \mathbb{X} \rightarrow \mathbb{R}\]
+		            can be seen as a gain function that represents the gain of the adversary when he takes action \(w\) and the secret value is \(x\).
+		            In this context, the g-vulnerability of a distribution \(\pi\) is a information measure formally defined as \[V_g[\pi] = \max_{w \in \mathbb{W} \sum_{x \in \mathbb{X}} \pi_x g(w, x)}\]
+		            It represents the expected gain of a rational adversary taking a best action.
+		      \item When the adversary observes the output of a channel, it's state of knowledge about the world changes, i.e.,
+		            it's prior probability distribution that represented his knowledge about the secret becomes a set of conditional probabilites given by the observation
+		            of the output of the channel.
+		      \item With a prior probability distribution \(pi\) as the prior state fo the knowledge about the secret, \(g\) as a gain function
+		            and \(C\) a channel matrix from \(\mathcal{X}\) to \(\mathcal{Y}\), the posterior g-vulnerability can be formally
+		            defined as a function that maps a posterior state of knowledge to a real number and is defined by:
+
+		            \[V_g[\pi \rangle C] = \sum_{y \in \mathcal{Y} \text{ and } p(y) \neq 0} p(y) V_g(p(X \mid y)\]
+
+		            It is interpreted as the expected optimal gain of a rational adversary given all possible outputs of the channel.
+		      \item Leakage, in this conext, represents the amount of information the adversary gains about the secret by the output of the chanenl.
+		            Given a prior state of knowledge probaility distribution \(\pi\), a gain function \(g\) and a channel \(C\),
+		            the leakage of information of a channel is formally defined by:
+		            \begin{itemize}
+			            \item Multiplicative g-leakage: the ratio of increase in the information the adversary has
+			                  \[\]
+			            \item Additive g-leakage: the absolute increase in the information the adversary has
+			                  \[\]
+		            \end{itemize}
 	      \end{enumerate}
+
 	\item 2
 \end{enumerate}
 
